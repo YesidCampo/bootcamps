@@ -6,6 +6,7 @@ import com.bootcamps.domain.models.BootcampForCapability;
 import com.bootcamps.domain.ports.in.CreateBootcampForCapabilityUseCase;
 import com.bootcamps.domain.ports.in.RetrieveBootcampForCapabilityUseCase;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class BootcampForCapabilityServiceImpl implements BootcampForCapabilityService {
@@ -35,6 +36,11 @@ public class BootcampForCapabilityServiceImpl implements BootcampForCapabilitySe
     @Override
     public Mono<BootcampForCapability> findBootcampIdAndCapabilityId(Long bootcampId, Long capabilityId) {
         return this.retrieveBootcampForCapabilityUseCase.findBootcampIdAndCapabilityId(bootcampId, capabilityId);
+    }
+
+    @Override
+    public Flux<BootcampForCapability> findByBootcampId(Long bootcampId) {
+        return this.retrieveBootcampForCapabilityUseCase.findByBootcampId(bootcampId);
     }
 
 }
