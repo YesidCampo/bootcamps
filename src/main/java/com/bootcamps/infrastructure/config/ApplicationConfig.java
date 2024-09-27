@@ -11,6 +11,7 @@ import com.bootcamps.application.services.impl.BootcampServiceImpl;
 import com.bootcamps.application.usecases.CreateBootcampForCapabilityUseCaseImpl;
 import com.bootcamps.application.usecases.CreateBootcampUseCaseImpl;
 import com.bootcamps.application.usecases.RetrieveBootCampForCapabilityUseCaseImpl;
+import com.bootcamps.application.usecases.RetrieveBootcampoUseCaseImpl;
 import com.bootcamps.domain.ports.out.BootcampForCapabilityRepositoryPort;
 import com.bootcamps.domain.ports.out.BootcampRepositoryPort;
 import com.bootcamps.infrastructure.repositories.impl.BootcampAdapter;
@@ -25,7 +26,8 @@ public class ApplicationConfig {
         return new BootcampServiceImpl(
                 new CreateBootcampUseCaseImpl(bootcampRepositoryPort),
                 new BootcampForCapabilityServiceImpl(bootcampForCapabilityService, bootcampForCapabilityService),
-                webClient);
+                webClient,
+                new RetrieveBootcampoUseCaseImpl(bootcampRepositoryPort));
     }
 
     @Bean
@@ -37,7 +39,8 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public BootcampForCapabilityRepositoryPort bootcampForCapabilityRepositoryPort(BootcampForCapabilityAdapter bootcampForCapabilityAdapter) {
+    public BootcampForCapabilityRepositoryPort bootcampForCapabilityRepositoryPort(
+            BootcampForCapabilityAdapter bootcampForCapabilityAdapter) {
         return bootcampForCapabilityAdapter;
     }
 
@@ -46,7 +49,5 @@ public class ApplicationConfig {
         return bootcampAdapter;
 
     }
-
-  
 
 }

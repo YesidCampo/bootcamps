@@ -4,6 +4,7 @@ import com.bootcamps.domain.models.BootcampForCapability;
 import com.bootcamps.domain.ports.in.RetrieveBootcampForCapabilityUseCase;
 import com.bootcamps.domain.ports.out.BootcampForCapabilityRepositoryPort;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public class RetrieveBootCampForCapabilityUseCaseImpl implements RetrieveBootcampForCapabilityUseCase {
@@ -18,6 +19,11 @@ public class RetrieveBootCampForCapabilityUseCaseImpl implements RetrieveBootcam
     @Override
     public Mono<BootcampForCapability> findBootcampIdAndCapabilityId(Long bootcampId, Long capabilityId) {
         return this.bootcampForCapabilityRepositoryPort.findBootcampIdAndCapabilityId(bootcampId, capabilityId);
+    }
+
+    @Override
+    public Flux<BootcampForCapability> findByBootcampId(Long bootcampId) {
+        return this.bootcampForCapabilityRepositoryPort.findAllByBootcampId(bootcampId);
     }
 
 }

@@ -1,20 +1,21 @@
 package com.bootcamps.domain.models;
 
-import java.util.List;
-
-public class Capability {
+public class Technology {
 
     private Long id;
     private String name;
-    private List<Technology> technologies;
 
-    public Capability() {
+    public Technology() {
+        super();
     }
 
-    public Capability(Long id, String name, List<Technology> technologies) {
+    public Technology(Long id) {
+        this.id = id;
+    }
+
+    public Technology(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.technologies = technologies;
     }
 
     public Long getId() {
@@ -49,21 +50,13 @@ public class Capability {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Capability other = (Capability) obj;
+        Technology other = (Technology) obj;
         if (id == null) {
             if (other.id != null)
                 return false;
         } else if (!id.equals(other.id))
             return false;
         return true;
-    }
-
-    public List<Technology> getTechnologies() {
-        return technologies;
-    }
-
-    public void setTechnologies(List<Technology> technologies) {
-        this.technologies = technologies;
     }
 
 }
